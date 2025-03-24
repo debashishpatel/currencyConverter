@@ -1,12 +1,61 @@
-# React + Vite
+# Currency Converter
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple **Currency Converter** built with **React** and **JavaScript** that allows users to convert between different currencies using real-time exchange rates.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+✅ Real-time exchange rates<br>
+✅ Convert between multiple currencies<br>
+✅ User-friendly interface<br>
+✅ Fetches data from an API
 
-## Expanding the ESLint configuration
+## 🛠 Technologies Used
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React.js
+- JavaScript (ES6+)
+- Axios (for API requests)
+- CSS (for styling)
+
+## 📦 Installation
+
+1. **Clone the repository**
+   ```sh
+   git clone https://github.com/your-username/currency-converter.git
+   cd currency-converter
+   ```
+
+2. **Install dependencies**
+   ```sh
+   npm install
+   ```
+
+3. **Run the app**
+   ```sh
+   npm start
+   ```
+
+## 🔗 API Used
+
+This project fetches exchange rates from an external API (e.g., [ExchangeRate-API](https://www.exchangerate-api.com/) or [Open Exchange Rates](https://openexchangerates.org/)).
+
+## 📌 Usage
+
+1. Select the base currency and target currency.
+2. Enter the amount you want to convert.
+3. Click the "Convert" button to see the converted value.
+
+## 🖥️ Screenshots
+
+![Currency Converter Screenshot](https://via.placeholder.com/800x400.png?text=App+Screenshot)
+
+## 🤝 Contributing
+
+Contributions are welcome! Feel free to fork the repo and submit a pull request.
+
+## 📜 License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+---
+### 💡 Have Feedback?
+If you have any suggestions or improvements, feel free to open an issue or reach out!
