@@ -1,34 +1,87 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import InputBox from './components/inputBox'
+import useCurrencyInfo from './Hooks/useCurrencyInfo'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [ amount, setAmount] = useState(0)
+  const [ from, setFrom] = useState('usd')
+  const [ to,setTo ] = useState('inr')
+  const [ convertAmount, setConvertAmount ] = useState(0)
+
+  const currencyInfo = useCurrencyInfo(from)
+  const options = Object.keys(currencyInfo)
+
+  const swap = () => {
+    setFrom(to)
+    setTo(from)
+    setConvertAmount(amount)
+    setAmount(convertAmount)
+  }
+
+  const convert = ()=>{
+    setConvertAmount(amount*currencyInfo[to])
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+    <div className="min-h-screen flex justify-center items-center bg-gradient-to-r px-4">
+    <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-xl w-full max-w-md">
+      <h1 className="text-3xl font-extrabold text-center text-gray-800 mb-6">
+        Currency Converter 💱
+      </h1>
+  
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          convert();
+        }}
+        className="space-y-6"
+      >
+        {/* From Input */}
+        <div>
+          <InputBox
+            label="From"
+            currencyOptions={options}
+            onCurrencyChange={(currency) => setFrom(currency)}
+            amountChange={(amount) => setAmount(amount)}
+          />
+        </div>
+  
+        {/* Swap Button */}
+        <div className="flex justify-center">
+          <button
+            type="button"
+            onClick={swap}
+            className="flex items-center gap-2 px-5 py-2.5 bg-blue-600 text-black font-medium rounded-lg shadow-md hover:bg-blue-700 transition-all duration-300"
+          >
+            🔄 Swap
+          </button>
+        </div>
+  
+        {/* To Input */}
+        <div>
+          <InputBox
+            label="To"
+            currencyOptions={options}
+            amount={convertAmount}
+            onCurrencyChange={(currency) => setTo(currency)}
+            selectedCurrency={to}
+            amountDisabled
+          />
+        </div>
+  
+        {/* Convert Button */}
+        <button
+          type="submit"
+          className="w-full py-3 bg-green-600 text-black font-semibold rounded-lg shadow-md hover:bg-green-700 transition-all duration-300"
+        >
+          Convert 💰
         </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+      </form>
+    </div>
+  </div>
+  
+  
   )
 }
 
